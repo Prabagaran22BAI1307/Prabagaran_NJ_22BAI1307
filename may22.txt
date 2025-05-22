@@ -1,0 +1,37 @@
+use may2025;
+select department,sum(salary) from worker group by department order by sum(salary) limit 1;
+select department, count(department) from worker group by department having count(department)>3;
+select department,sum(salary) from worker group by department order by sum(salary) limit 1 offset 2;
+select first_name,salary from worker where salary=(select max(salary) from worker1);
+SELECT * FROM worker WHERE salary > (SELECT AVG(salary)FROM worker);
+CREATE TABLE student (
+    id INT PRIMARY KEY,
+    name VARCHAR(100)
+);
+INSERT INTO student (id, name) VALUES
+(1, 'Alice'),
+(2, 'Bob'),
+(3, 'Charlie'),
+(4, 'Diana'),
+(5, 'Ethan');
+
+CREATE TABLE address (
+    id INT,
+    address VARCHAR(255)
+);
+INSERT INTO address (id, address) VALUES
+(1, 'Bengaluru'),
+(2, 'New Delhi'),
+(3, 'Hyderabad'),
+(4, 'Chennai'),
+(5, 'Kolkata');
+
+select * from student inner join address where student.id=address.id;
+select * from student natural join address;
+select * from student left outer join address on student.id=address.id;
+select * from address left outer join student on student.id=address.id;
+select * from student right outer join address on student.id=address.id;
+select * from address right outer join student on student.id=address.id;
+
+
+
